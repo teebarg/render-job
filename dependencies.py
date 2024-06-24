@@ -30,7 +30,7 @@ async def refresh_endpoint():
         try:
             for url in SETTINGS.URLs:
                 if response_text := api_call(url=url):
-                    logging.info(f"API Response: {response_text}")
+                    logging.info(f"API Response from: {response_text}")
                     print('\n\n\n')
         except Exception as e:
             logging.error(f"An error occurred: {str(e)}")
