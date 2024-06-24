@@ -1,6 +1,6 @@
 # Variables
 APP_NAME := render-job
-RENDER_JOB_PORT := 5000
+RENDER_JOB_PORT := 5555
 
 # Targets
 build:
