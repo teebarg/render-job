@@ -11,6 +11,6 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-@app.get("/health")
+@app.get("/health-check")
 def view_health():
     return "OK"
