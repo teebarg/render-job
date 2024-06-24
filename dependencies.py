@@ -15,9 +15,9 @@ logging.basicConfig(
 )
 
 
-def api_call():
+def api_call(url: str):
     try:
-        response = requests.get(SETTINGS.URL)
+        response = requests.get(url)
         response.raise_for_status()  # Raise an exception for 4xx and 5xx status codes
         return response.text
     except requests.exceptions.RequestException as e:
@@ -28,9 +28,10 @@ def api_call():
 async def refresh_endpoint():
     while True:
         try:
-            if response_text := api_call():
-                logging.info(f"API Response: {response_text}")
-                print('\n\n\n')
+            for url in SETTINGS.URLs:
+                if response_text := api_call(url=url):
+                    logging.info(f"API Response: {response_text}")
+                    print('\n\n\n')
         except Exception as e:
             logging.error(f"An error occurred: {str(e)}")
         await asyncio.sleep(600)
